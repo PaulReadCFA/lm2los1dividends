@@ -13,7 +13,7 @@ export const state = {
   shortYears: 5,            // Years of high growth
   
   // Model selection
-  selectedModel: 'constant', // 'constant' | 'growth' | 'changing' | 'all'
+  selectedModel: 'all', // 'constant' | 'growth' | 'changing' | 'all'
   
   // UI state
   viewMode: 'chart',        // 'chart' | 'table'
