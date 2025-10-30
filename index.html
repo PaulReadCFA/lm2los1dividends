@@ -18,137 +18,143 @@
   <div class="container">
     <main class="content" id="main-content">
       <!-- Card 1: Equation -->
-      <section class="card" id="equation-card" aria-labelledby="equation-title">
-        <h4 class="card-title" id="equation-title">Dividend Discount Models</h4>
-        <div class="card-content">
-          <p class="equation-intro">
-            Three approaches to equity valuation based on present value of expected dividends:
+<!-- Card 1: Equation -->
+<section class="card" id="equation-card" aria-labelledby="equation-title">
+  <h4 class="card-title" id="equation-title">Dividend Discount Models</h4>
+  <div class="card-content">
+    <p class="equation-intro">
+      Three approaches to equity valuation based on the present value of expected dividends.
+    </p>
+
+    <div class="model-equations-grid">
+
+      <!-- Constant Dividend Model -->
+      <div class="equation-box" style="border-left-color:#2563eb;">
+        <div class="equation-box-title" style="color:#2563eb;">Constant Dividend</div>
+        <div class="equation-container-compact" tabindex="0">
+          <p class="sr-only" id="constant-equation-desc">
+            Constant dividend discount model. Price (P) equals current dividend (D0) divided by required return (r).
+            P is blue, D0 is orange, r is violet.
           </p>
 
-          <div class="model-equations-grid">
-            <!-- Constant Dividend Model -->
-            <div class="equation-box" style="border-left-color: #2563eb;">
-              <div class="equation-box-title" style="color: #2563eb;">Constant Dividend</div>
-              <div class="equation-container-compact">
-                <p class="sr-only" id="constant-equation-desc">
-                  Price equals current dividend divided by required return
-                </p>
-                <!-- MathML version -->
-                <div class="mathml-equation">
-                  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-                    <mrow>
-                      <mi mathcolor="#2563eb" mathvariant="bold">P</mi>
-                      <mo>=</mo>
-                      <mfrac linethickness="1.2px">
-                        <msub>
-                          <mi mathcolor="#ea792d" mathvariant="bold">D</mi>
-                          <mn>0</mn>
-                        </msub>
-                        <mi mathcolor="#7e22ce">r</mi>
-                      </mfrac>
-                    </mrow>
-                  </math>
-                </div>
-                <!-- HTML fallback -->
-                <div class="html-equation" hidden>
-                  <span class="bold" style="color:#2563eb;">P</span> = 
-                  <span style="color:#ea792d;">D<sub>0</sub></span> / 
-                  <span style="color:#7e22ce;">r</span>
-                </div>
-              </div>
-              
-            </div>
+          <div class="mathml-equation" aria-describedby="constant-equation-desc">
+            <math role="math" xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+              <mrow>
+                <mi mathcolor="#2563eb" mathvariant="bold">P</mi>
+                <mo>=</mo>
+                <mfrac linethickness="1.2px">
+                  <msub>
+                    <mi mathcolor="#d35f00" mathvariant="bold">D</mi>
+                    <mn>0</mn>
+                  </msub>
+                  <mi mathcolor="#7e22ce">r</mi>
+                </mfrac>
+              </mrow>
+            </math>
+          </div>
 
-            <!-- Constant Growth Model -->
-            <div class="equation-box" style="border-left-color: #16a34a;">
-              <div class="equation-box-title" style="color: #16a34a;">Constant Growth</div>
-              <div class="equation-container-compact">
-                <p class="sr-only" id="growth-equation-desc">
-                  Price equals next period's dividend divided by required return minus growth rate
-                </p>
-                <!-- MathML version -->
-                <div class="mathml-equation">
-                  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-                    <mrow>
-                      <mi mathcolor="#16a34a" mathvariant="bold">P</mi>
-                      <mo>=</mo>
-                      <mfrac linethickness="1.2px">
-                        <msub>
-                          <mi mathcolor="#ea792d" mathvariant="bold">D</mi>
-                          <mn>1</mn>
-                        </msub>
-                        <mrow>
-                          <mi mathcolor="#7e22ce">r</mi>
-                          <mo>−</mo>
-                          <mi mathcolor="#9333ea">g</mi>
-                        </mrow>
-                      </mfrac>
-                    </mrow>
-                  </math>
-                </div>
-                <!-- HTML fallback -->
-                <div class="html-equation" hidden>
-                  <span class="bold" style="color:#16a34a;">P</span> = 
-                  <span style="color:#ea792d;">D<sub>1</sub></span> / 
-                  (<span style="color:#7e22ce;">r</span> − <span style="color:#9333ea;">g</span>)
-                </div>
-              </div>
-              
-            </div>
-
-            <!-- Changing Growth Model -->
-            <div class="equation-box" style="border-left-color: #9333ea;">
-              <div class="equation-box-title" style="color: #9333ea;">Changing Growth</div>
-              <div class="equation-container-compact">
-                <p class="sr-only" id="changing-equation-desc">
-                  Price equals present value of high growth dividends plus present value of terminal value
-                </p>
-                <!-- MathML version -->
-                <div class="mathml-equation">
-                  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-                    <mrow>
-                      <mi mathcolor="#9333ea" mathvariant="bold">P</mi>
-                      <mo>=</mo>
-                      <munderover>
-                        <mo>∑</mo>
-                        <mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow>
-                        <mi>n</mi>
-                      </munderover>
-                      <mfrac>
-                        <msub>
-                          <mi mathcolor="#ea792d">D</mi>
-                          <mi>t</mi>
-                        </msub>
-                        <msup>
-                          <mrow><mo>(</mo><mn>1</mn><mo>+</mo><mi mathcolor="#7e22ce">r</mi><mo>)</mo></mrow>
-                          <mi>t</mi>
-                        </msup>
-                      </mfrac>
-                      <mo>+</mo>
-                      <mfrac>
-                        <msub>
-                          <mi mathcolor="#16a34a">P</mi>
-                          <mi>n</mi>
-                        </msub>
-                        <msup>
-                          <mrow><mo>(</mo><mn>1</mn><mo>+</mo><mi mathcolor="#7e22ce">r</mi><mo>)</mo></mrow>
-                          <mi>n</mi>
-                        </msup>
-                      </mfrac>
-                    </mrow>
-                  </math>
-                </div>
-                <!-- HTML fallback -->
-                <div class="html-equation" hidden>
-                  <span class="bold" style="color:#9333ea;">P</span> = 
-                  PV<sub>high</sub> + PV<sub>term</sub>
-                </div>
-              </div>
-              
-            </div>
+          <div class="html-equation" hidden>
+            <span class="bold" style="color:#2563eb;">P</span> =
+            <span style="color:#d35f00;">D<sub>0</sub></span> /
+            <span style="color:#7e22ce;">r</span>
           </div>
         </div>
-      </section>
+      </div>
+
+      <!-- Constant Growth Model -->
+      <div class="equation-box" style="border-left-color:#16a34a;">
+        <div class="equation-box-title" style="color:#16a34a;">Constant Growth</div>
+        <div class="equation-container-compact" tabindex="0">
+          <p class="sr-only" id="growth-equation-desc">
+            Constant growth (Gordon) model. Price (P) equals next year's dividend (D1) divided by required return (r)
+            minus growth rate (g). P is green, D1 is orange, r is violet, g is purple.
+          </p>
+
+          <div class="mathml-equation" aria-describedby="growth-equation-desc">
+            <math role="math" xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+              <mrow>
+                <mi mathcolor="#16a34a" mathvariant="bold">P</mi>
+                <mo>=</mo>
+                <mfrac linethickness="1.2px">
+                  <msub>
+                    <mi mathcolor="#d35f00" mathvariant="bold">D</mi>
+                    <mn>1</mn>
+                  </msub>
+                  <mrow>
+                    <mi mathcolor="#7e22ce">r</mi>
+                    <mo>−</mo>
+                    <mi mathcolor="#7b2bc5">g</mi>
+                  </mrow>
+                </mfrac>
+              </mrow>
+            </math>
+          </div>
+
+          <div class="html-equation" hidden>
+            <span class="bold" style="color:#16a34a;">P</span> =
+            <span style="color:#d35f00;">D<sub>1</sub></span> /
+            (<span style="color:#7e22ce;">r</span> −
+             <span style="color:#7b2bc5;">g</span>)
+          </div>
+        </div>
+      </div>
+
+      <!-- Changing Growth Model -->
+      <div class="equation-box" style="border-left-color:#7b2bc5;">
+        <div class="equation-box-title" style="color:#7b2bc5;">Changing Growth</div>
+        <div class="equation-container-compact" tabindex="0">
+          <p class="sr-only" id="changing-equation-desc">
+            Two-stage or changing growth model. Price (P) equals the present value of high-growth dividends plus
+            the present value of the terminal value after n years. P is purple, D<sub>t</sub> is orange,
+            r (required return) is violet, P<sub>n</sub> (terminal price) is green.
+          </p>
+
+          <div class="mathml-equation" aria-describedby="changing-equation-desc">
+            <math role="math" xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+              <mrow>
+                <mi mathcolor="#7b2bc5" mathvariant="bold">P</mi>
+                <mo>=</mo>
+                <munderover>
+                  <mo>∑</mo>
+                  <mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow>
+                  <mi>n</mi>
+                </munderover>
+                <mfrac>
+                  <msub>
+                    <mi mathcolor="#d35f00">D</mi>
+                    <mi>t</mi>
+                  </msub>
+                  <msup>
+                    <mrow><mo>(</mo><mn>1</mn><mo>+</mo><mi mathcolor="#7e22ce">r</mi><mo>)</mo></mrow>
+                    <mi>t</mi>
+                  </msup>
+                </mfrac>
+                <mo>+</mo>
+                <mfrac>
+                  <msub>
+                    <mi mathcolor="#16a34a">P</mi>
+                    <mi>n</mi>
+                  </msub>
+                  <msup>
+                    <mrow><mo>(</mo><mn>1</mn><mo>+</mo><mi mathcolor="#7e22ce">r</mi><mo>)</mo></mrow>
+                    <mi>n</mi>
+                  </msup>
+                </mfrac>
+              </mrow>
+            </math>
+          </div>
+
+          <div class="html-equation" hidden>
+            <span class="bold" style="color:#7b2bc5;">P</span> =
+            PV<sub>high</sub> + PV<sub>term</sub>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
       <!-- Cards 2 & 3: Results and Visualizer -->
       <div class="grid-container">
