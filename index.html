@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dividend Discount Models | CFA Institute</title>
+  <meta name="description" content="Interactive dividend discount model calculator comparing constant, growth, and changing growth models">
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <!-- Skip Links (must be first in DOM) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#calculator" class="skip-link">Skip to calculator</a>
+  <a href="#data-table" class="skip-link">Skip to data table</a>
+
+  <div class="container">
+    <main class="content" id="main-content">
+      <!-- Card 1: Equation -->
+      <section class="card" id="equation-card" aria-labelledby="equation-title">
+        <h4 class="card-title" id="equation-title">Dividend Discount Models</h4>
+        <div class="card-content">
+          <p class="equation-intro">
+            Three approaches to equity valuation based on present value of expected dividends:
+          </p>
+
+          <div class="model-equations-grid">
+            <!-- Constant Dividend Model -->
+            <div class="equation-box" style="border-left-color: #2563eb;">
+              <div class="equation-box-title" style="color: #2563eb;">Constant Dividend</div>
+              <div class="equation-container-compact">
+                <p class="sr-only" id="constant-equation-desc">
+                  Price equals current dividend divided by required return
+                </p>
+                <!-- MathML version -->
+                <div class="mathml-equation">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                      <mi mathcolor="#2563eb" mathvariant="bold">P</mi>
+                      <mo>=</mo>
+                      <mfrac linethickness="1.2px">
+                        <msub>
+                          <mi mathcolor="#ea792d" mathvariant="bold">D</mi>
+                          <mn>0</mn>
+                        </msub>
+                        <mi mathcolor="#7e22ce">r</mi>
+                      </mfrac>
+                    </mrow>
+                  </math>
+                </div>
+                <!-- HTML fallback -->
+                <div class="html-equation" hidden>
+                  <span class="bold" style="color:#2563eb;">P</span> = 
+                  <span style="color:#ea792d;">D<sub>0</sub></span> / 
+                  <span style="color:#7e22ce;">r</span>
+                </div>
+              </div>
+              
+            </div>
+
+            <!-- Constant Growth Model -->
+            <div class="equation-box" style="border-left-color: #16a34a;">
+              <div class="equation-box-title" style="color: #16a34a;">Constant Growth</div>
+              <div class="equation-container-compact">
+                <p class="sr-only" id="growth-equation-desc">
+                  Price equals next period's dividend divided by required return minus growth rate
+                </p>
+                <!-- MathML version -->
+                <div class="mathml-equation">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                      <mi mathcolor="#16a34a" mathvariant="bold">P</mi>
+                      <mo>=</mo>
+                      <mfrac linethickness="1.2px">
+                        <msub>
+                          <mi mathcolor="#ea792d" mathvariant="bold">D</mi>
+                          <mn>1</mn>
+                        </msub>
+                        <mrow>
+                          <mi mathcolor="#7e22ce">r</mi>
+                          <mo>−</mo>
+                          <mi mathcolor="#9333ea">g</mi>
+                        </mrow>
+                      </mfrac>
+                    </mrow>
+                  </math>
+                </div>
+                <!-- HTML fallback -->
+                <div class="html-equation" hidden>
+                  <span class="bold" style="color:#16a34a;">P</span> = 
+                  <span style="color:#ea792d;">D<sub>1</sub></span> / 
+                  (<span style="color:#7e22ce;">r</span> − <span style="color:#9333ea;">g</span>)
+                </div>
+              </div>
+              
+            </div>
+
+            <!-- Changing Growth Model -->
+            <div class="equation-box" style="border-left-color: #9333ea;">
+              <div class="equation-box-title" style="color: #9333ea;">Changing Growth</div>
+              <div class="equation-container-compact">
+                <p class="sr-only" id="changing-equation-desc">
+                  Price equals present value of high growth dividends plus present value of terminal value
+                </p>
+                <!-- MathML version -->
+                <div class="mathml-equation">
+                  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                      <mi mathcolor="#9333ea" mathvariant="bold">P</mi>
+                      <mo>=</mo>
+                      <munderover>
+                        <mo>∑</mo>
+                        <mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow>
+                        <mi>n</mi>
+                      </munderover>
+                      <mfrac>
+                        <msub>
+                          <mi mathcolor="#ea792d">D</mi>
+                          <mi>t</mi>
+                        </msub>
+                        <msup>
+                          <mrow><mo>(</mo><mn>1</mn><mo>+</mo><mi mathcolor="#7e22ce">r</mi><mo>)</mo></mrow>
+                          <mi>t</mi>
+                        </msup>
+                      </mfrac>
+                      <mo>+</mo>
+                      <mfrac>
+                        <msub>
+                          <mi mathcolor="#16a34a">P</mi>
+                          <mi>n</mi>
+                        </msub>
+                        <msup>
+                          <mrow><mo>(</mo><mn>1</mn><mo>+</mo><mi mathcolor="#7e22ce">r</mi><mo>)</mo></mrow>
+                          <mi>n</mi>
+                        </msup>
+                      </mfrac>
+                    </mrow>
+                  </math>
+                </div>
+                <!-- HTML fallback -->
+                <div class="html-equation" hidden>
+                  <span class="bold" style="color:#9333ea;">P</span> = 
+                  PV<sub>high</sub> + PV<sub>term</sub>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cards 2 & 3: Results and Visualizer -->
+      <div class="grid-container">
+        <!-- Results -->
+        <div class="grid-item-left">
+          <section class="card" id="results-card" aria-labelledby="results-title">
+            <h4 class="card-title" id="results-title">Valuation Results</h4>
+            <div class="card-content">
+              <div id="results-content">
+                <!-- Populated by JavaScript -->
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Visualizer (Chart/Table toggle) -->
+        <div class="grid-item-right">
+          <section class="card" id="data-table" tabindex="-1" aria-labelledby="visualizer-title">
+            <h4 class="card-title" id="visualizer-title">Dividend Cash Flows</h4>
+            <div class="card-content">
+              <!-- View controls -->
+              <div class="view-controls">
+                <div class="legend" id="chart-legend">
+                  <span class="legend-item">
+                    <span class="legend-color" style="background-color: #2563eb; border: 1px solid #333;"></span>
+                    Constant Dividend
+                  </span>
+                  <span class="legend-item">
+                    <span class="legend-color" style="background-color: #16a34a; border: 1px solid #333;"></span>
+                    Constant Growth
+                  </span>
+                  <span class="legend-item">
+                    <span class="legend-color" style="background-color: #9333ea; border: 1px solid #333;"></span>
+                    Changing Growth
+                  </span>
+                </div>
+                
+                <div class="button-group" role="group" aria-label="View mode">
+                  <button id="chart-view-btn" class="toggle-btn active" aria-pressed="true">
+                    Show Chart
+                  </button>
+                  <button id="table-view-btn" class="toggle-btn" aria-pressed="false">
+                    Show Table
+                  </button>
+                </div>
+              </div>
+
+              <!-- Screen reader announcement for view changes -->
+              <div class="sr-only" aria-live="polite" aria-atomic="true" id="view-announcement"></div>
+
+              <!-- Hidden chart description -->
+              <div class="sr-only" id="dividend-chart-desc">
+                <h5 id="dividend-chart-title">Dividend cash flows over time</h5>
+                <p>
+                  This chart displays dividend cash flows under different valuation models. 
+                  Year 0 shows the initial investment (negative cash flow). 
+                  Years 1-10 show expected dividend payments under each model scenario.
+                  Use the arrow keys to navigate between data points and hear specific values.
+                </p>
+              </div>
+
+              <!-- Chart container -->
+              <div id="chart-container" class="chart-wrapper"
+                   role="img"
+                   aria-labelledby="dividend-chart-title"
+                   aria-describedby="dividend-chart-desc"
+                   tabindex="0">
+                <canvas id="dividend-chart"></canvas>
+              </div>
+
+              <!-- Table container -->
+              <div id="table-container" class="table-wrapper" style="display:none;">
+                <table id="data-table-element" class="data-table" tabindex="0">
+                  <!-- Populated by JavaScript -->
+                </table>
+                <p id="table-note" class="table-note">
+                  Note: Values in parentheses indicate negative cash flows (initial investment).
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Card 4: Calculator -->
+      <section class="card" id="calculator" tabindex="-1" aria-labelledby="calculator-title">
+        <h4 class="card-title" id="calculator-title">Dividend Discount Model Calculator</h4>
+        <div class="card-content">
+          <!-- Model selector -->
+          <div class="model-selector">
+            <label class="model-selector-label">Select Model:</label>
+            <div class="button-group" role="group" aria-label="Model selection">
+              <button id="model-all-btn" class="model-btn active" data-model="all" aria-pressed="true">
+                All Models
+              </button>
+              <button id="model-constant-btn" class="model-btn" data-model="constant" aria-pressed="false" style="--model-color: #2563eb;">
+                Constant
+              </button>
+              <button id="model-growth-btn" class="model-btn" data-model="growth" aria-pressed="false" style="--model-color: #16a34a;">
+                Growth
+              </button>
+              <button id="model-changing-btn" class="model-btn" data-model="changing" aria-pressed="false" style="--model-color: #9333ea;">
+                Changing
+              </button>
+            </div>
+          </div>
+
+          <!-- Input controls -->
+          <!-- Enhanced Input Section with Two-Row Layout -->
+<!-- This replaces the single input-group-inline div starting at line 265 -->
+
+<div class="input-section">
+  <p class="sr-only" id="inputHelp">
+    Enter values and the calculator updates results and the chart automatically.
+  </p>
+
+  <!-- Row 1: Basic Parameters -->
+  <div class="input-group-inline">
+    <div class="input-inline">
+      <label for="D0" 
+             class="input-label-inline"
+             data-tooltip-id="tooltip-D0"
+             data-tooltip-text="Most recent annual dividend paid"
+             data-tooltip-range="$0.01 to $1,000">
+        Current Dividend (D₀):
+      </label>
+      <div class="input-with-suffix-inline">
+        <span class="input-prefix-inline">$</span>
+        <input 
+          type="number" 
+          id="D0" 
+          class="input-field-inline"
+          min="0.01" max="1000" step="0.1" value="5"
+          aria-required="true" 
+          aria-invalid="false"
+          aria-describedby="tooltip-D0">
+      </div>
+    </div>
+
+    <div class="input-inline">
+      <label for="required" 
+             class="input-label-inline"
+             data-tooltip-id="tooltip-required"
+             data-tooltip-text="Investor's required rate of return"
+             data-tooltip-range="0.1% to 50%">
+        Required Return (r):
+      </label>
+      <div class="input-with-suffix-inline">
+        <input 
+          type="number" 
+          id="required" 
+          class="input-field-inline"
+          min="0.1" max="50" step="0.1" value="10"
+          aria-required="true" 
+          aria-invalid="false"
+          aria-describedby="tooltip-required">
+        <span class="input-suffix-inline">%</span>
+      </div>
+    </div>
+
+    <div class="input-inline">
+      <label for="gConst" 
+             class="input-label-inline"
+             data-tooltip-id="tooltip-gConst"
+             data-tooltip-text="Constant dividend growth rate (Gordon model). Must be less than required return."
+             data-tooltip-range="-10% to 30%">
+        Constant Growth (g):
+      </label>
+      <div class="input-with-suffix-inline">
+        <input 
+          type="number" 
+          id="gConst" 
+          class="input-field-inline"
+          min="-10" max="30" step="0.1" value="5"
+          aria-required="false" 
+          aria-invalid="false"
+          aria-describedby="tooltip-gConst">
+        <span class="input-suffix-inline">%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Two-Stage Model Parameters -->
+  <div class="input-group-inline">
+    <div class="input-inline">
+      <label for="gShort" 
+             class="input-label-inline"
+             data-tooltip-id="tooltip-gShort"
+             data-tooltip-text="Initial high growth rate for two-stage model"
+             data-tooltip-range="-10% to 50%">
+        Short-term Growth:
+      </label>
+      <div class="input-with-suffix-inline">
+        <input 
+          type="number" 
+          id="gShort" 
+          class="input-field-inline"
+          min="-10" max="50" step="0.1" value="5"
+          aria-required="false" 
+          aria-invalid="false"
+          aria-describedby="tooltip-gShort">
+        <span class="input-suffix-inline">%</span>
+      </div>
+    </div>
+
+    <div class="input-inline">
+      <label for="gLong" 
+             class="input-label-inline"
+             data-tooltip-id="tooltip-gLong"
+             data-tooltip-text="Sustainable long-term growth rate. Must be less than required return."
+             data-tooltip-range="-10% to 30%">
+        Long-term Growth:
+      </label>
+      <div class="input-with-suffix-inline">
+        <input 
+          type="number" 
+          id="gLong" 
+          class="input-field-inline"
+          min="-10" max="30" step="0.1" value="3"
+          aria-required="false" 
+          aria-invalid="false"
+          aria-describedby="tooltip-gLong">
+        <span class="input-suffix-inline">%</span>
+      </div>
+    </div>
+
+    <div class="input-inline">
+      <label for="shortYears" 
+             class="input-label-inline"
+             data-tooltip-id="tooltip-shortYears"
+             data-tooltip-text="Number of years of high growth before transition"
+             data-tooltip-range="1 to 10 years">
+        High Growth Period:
+      </label>
+      <div class="input-with-suffix-inline">
+        <input 
+          type="number" 
+          id="shortYears" 
+          class="input-field-inline"
+          min="1" max="10" step="1" value="5"
+          aria-required="false" 
+          aria-invalid="false"
+          aria-describedby="tooltip-shortYears">
+        <span class="input-suffix-inline">yrs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Validation summary -->
+  <div id="validation-summary" class="validation-summary" role="alert" aria-live="polite" style="display: none;">
+    <div class="validation-title">Please correct the following:</div>
+    <ul id="validation-list"></ul>
+  </div>
+</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script type="module">
+    // Initialize tooltips
+    import { initTooltips } from './modules/tooltip.js';
+    initTooltips();
+  </script>
+  <script type="module" src="calculator.js"></script>
+  <script>
+  // Simple MathML support check
+  const supportsMathML = CSS.supports('math-style: normal');
+
+  if (!supportsMathML) {
+    // Hide MathML, show fallback
+    document.querySelectorAll('.mathml-equation').forEach(el => el.hidden = true);
+    document.querySelectorAll('.html-equation').forEach(el => el.hidden = false);
+  }
+  </script>
+</body>
+</html>
