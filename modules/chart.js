@@ -34,8 +34,24 @@ export function renderChart(calculations, selectedModel, showLabels = true) {
   }
   
   // Enhanced accessibility attributes
-  canvas.setAttribute('tabindex', '0');
-  canvas.setAttribute('role', 'img');
+  // Make canvas focusable and add keyboard navigation
+ canvas.setAttribute('tabindex', '0');
+canvas.setAttribute('role', 'img');
+canvas.setAttribute('aria-roledescription', 'interactive chart');
+canvas.setAttribute(
+  'aria-label',
+  'Interactive chart. Press Enter to focus, then use arrow keys to explore data points.'
+);
+  // Allow Enter to activate keyboard navigation from wrapper
+const container = canvas.parentElement;
+if (container) {
+  container.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      canvas.focus();
+    }
+  });
+}
   
   // Enhanced aria-label with detailed keyboard instructions
   const modelDescription = selectedModel === 'all' 
@@ -102,13 +118,22 @@ export function renderChart(calculations, selectedModel, showLabels = true) {
         mode: 'index',
         intersect: false
       },
-      onHover: (event, activeElements) => {
-        // Ignore mouse hover if in keyboard mode
-        if (isKeyboardMode && document.activeElement === canvas) {
-          event.native.stopImmediatePropagation();
-          return false;
-        }
-      },
+onHover: (event, activeElements) => {
+  // Skip if keyboard focus already active
+  if (isKeyboardMode && document.activeElement === canvas) return;
+
+  // Announce hovered data point for screen readers
+  if (activeElements.length > 0) {
+    const index = activeElements[0].index;
+    const firstModel = calculations[
+      selectedModel === 'all' ? 'constant' : selectedModel
+    ];
+    const cashFlow = firstModel.cashFlows[index];
+    announceDataPoint(cashFlow, calculations, selectedModel);
+  }
+}
+
+,
       plugins: {
         title: {
           display: false
